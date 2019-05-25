@@ -6,9 +6,11 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.github.ybq.android.spinkit.style.Circle;
 import com.squareup.picasso.Picasso;
 
 import retrofit2.Call;
@@ -18,10 +20,12 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class MainActivity extends AppCompatActivity {
-    Button buscar;
+    Button buscar,limpiar;
     TextInputEditText pokemon_name;
     TextView nombrePk_txt,heightPk_txt,weightPk_txt;
     ImageView fotoPk;
+    ProgressBar pbar;
+    Circle circle;
     private static final String PHOTO_POK = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/";
 
     @Override
@@ -34,9 +38,14 @@ public class MainActivity extends AppCompatActivity {
         heightPk_txt=findViewById(R.id.heightPk_txt);
         weightPk_txt=findViewById(R.id.weightPk_txt);
         fotoPk = findViewById(R.id.fotoPk);
+        limpiar=findViewById(R.id.limpiar);
+        pbar=findViewById(R.id.pbar);
+        circle=new Circle();
+        pbar.setProgressDrawable(circle);
         buscar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                pbar.setVisibility(View.VISIBLE);
                 Retrofit retrofit = new Retrofit.Builder()
                         .baseUrl("https://pokeapi.co/api/v2/")
                         .addConverterFactory(GsonConverterFactory.create())  //Como se va a formatear la respuesta JSON
@@ -64,6 +73,7 @@ public class MainActivity extends AppCompatActivity {
                                                     weightPk_txt.setText(pokemonDetalle.getWeight());
                                                     heightPk_txt.setText(pokemonDetalle.getHeight());
                                                     Picasso.with(getApplicationContext()).load(PHOTO_POK + num + ".png").into(fotoPk);
+                                                    pbar.setVisibility(View.GONE);
                                                 }
                                             }
 
@@ -72,8 +82,9 @@ public class MainActivity extends AppCompatActivity {
 
                                             }
                                         });
-                                        //Picasso.with(getApplicationContext()).load(PHOTO_POK + num + ".png").into(fotoPk);
                                         break;
+                                    }else{
+                                        pbar.setVisibility(View.GONE);
                                     }
                                 }
                             }
@@ -88,6 +99,17 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(),"Algo salio mal "+ throwable.getMessage(),Toast.LENGTH_LONG).show();
                     }
                 });
+            }
+        });
+        limpiar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                pokemon_name.setText("");
+                nombrePk_txt.setText("");
+                weightPk_txt.setText("");
+                heightPk_txt.setText("");
+                fotoPk.setImageResource(android.R.color.transparent);
+                pokemon_name.requestFocus();
             }
         });
     }

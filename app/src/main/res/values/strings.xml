@@ -2,7 +2,8 @@
     <string name="app_name">PokeApi</string>
     <string name="nombre_pokemon">Nombre de pokemon</string>
     <string name="buscar_pokemon">Buscar pokemon</string>
-    <string name="nombre">Nombre</string>
+    <string name="limpiar">Limpiar</string>
+    <string name="nombre">Nombre :</string>
     <string name="Talla">Talla :</string>
     <string name="Peso">Peso :</string>
 </resources>
