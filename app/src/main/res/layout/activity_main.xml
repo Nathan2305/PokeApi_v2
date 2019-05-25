@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -20,7 +19,7 @@
                 android:id="@+id/pokemon_name"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:hint="Nombre de pokemon" />
+                android:hint="@string/nombre_pokemon" />
         </android.support.design.widget.TextInputLayout>
 
         <Button
@@ -28,7 +27,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
-            android:text="Buscar Pokemon"
+            android:text="@string/buscar_pokemon"
             android:textAllCaps="false"
             android:textSize="19sp" />
 
@@ -38,13 +37,15 @@
             android:orientation="horizontal">
 
             <TextView
+                android:textSize="20sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:padding="10dp"
-                android:text="Nombre :" />
+                android:text="@string/nombre" />
 
             <TextView
+                android:textSize="20sp"
                 android:id="@+id/nombrePk_txt"
                 android:padding="10dp"
                 android:layout_width="match_parent"
@@ -58,13 +59,15 @@
             android:orientation="horizontal">
 
             <TextView
+                android:textSize="20sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:padding="10dp"
-                android:text="Talla :" />
+                android:text="@string/Talla" />
 
             <TextView
+                android:textSize="20sp"
                 android:id="@+id/heightPk_txt"
                 android:padding="10dp"
                 android:layout_width="match_parent"
@@ -77,13 +80,15 @@
             android:orientation="horizontal">
 
             <TextView
+                android:textSize="20sp"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="10dp"
                 android:padding="10dp"
-                android:text="Peso :" />
+                android:text="@string/Peso" />
 
             <TextView
+                android:textSize="20sp"
                 android:id="@+id/weightPk_txt"
                 android:padding="10dp"
                 android:layout_width="match_parent"
@@ -92,9 +97,10 @@
         </LinearLayout>
 
         <ImageView
+            android:layout_margin="10dp"
             android:id="@+id/fotoPk"
-            android:layout_width="150dp"
-            android:layout_height="150dp"
+            android:layout_width="180dp"
+            android:layout_height="180dp"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="10dp" />
 

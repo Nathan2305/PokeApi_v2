@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity {
                         .addConverterFactory(GsonConverterFactory.create())  //Como se va a formatear la respuesta JSON
                         .build();
                 final PokeApiInterface pokeApiInterface = retrofit.create(PokeApiInterface.class);
-                Call<PokemonRespuesta> respuestaCall = pokeApiInterface.obtenerPokemonRespuesta();
+                Call<PokemonRespuesta> respuestaCall = pokeApiInterface.obtenerPokemonRespuesta("300"); // 300 primeros
                 respuestaCall.enqueue(new Callback<PokemonRespuesta>() {
                     @Override
                     public void onResponse(Call<PokemonRespuesta> call, Response<PokemonRespuesta> response) {
