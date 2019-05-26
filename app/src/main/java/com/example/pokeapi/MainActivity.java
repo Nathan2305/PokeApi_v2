@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
     ProgressBar pbar;
     String num = "";
     Circle circle;
-    PokeApiInterface pokeApiInterface = null;
+    PokeInterface pokeApiInterface = null;
     String namePok = "";
     private static final String PHOTO_POK = "https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/";
 
@@ -55,7 +55,7 @@ public class MainActivity extends AppCompatActivity {
                             .baseUrl("https://pokeapi.co/api/v2/")
                             .addConverterFactory(GsonConverterFactory.create())  //Como se va a formatear la respuesta JSON
                             .build();
-                    pokeApiInterface = retrofit.create(PokeApiInterface.class);
+                    pokeApiInterface = retrofit.create(PokeInterface.class);
                     Call<PokemonRespuesta> respuestaCall = pokeApiInterface.obtenerPokemonRespuesta("300"); // 300 primeros
                     respuestaCall.enqueue(new Callback<PokemonRespuesta>() {
                         @Override
